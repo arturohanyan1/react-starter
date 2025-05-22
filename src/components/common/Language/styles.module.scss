@@ -1,0 +1,26 @@
+@import '../../styles/constants/breakpoints.scss';
+@import '../../styles/sizes.scss';
+
+.language_container {
+  .language_button {
+    & > div {
+      text-transform: uppercase;
+
+      img {
+        margin-right: 4px;
+        height: 18px;
+        border-radius: 4px;
+        width: 26px;
+        object-fit: contain;
+      }
+    }
+  }
+}
+
+@media (max-width: $breakpoint-down-sm) {
+  .language_container {
+    .language_button {
+      height: $button_height_sm;
+    }
+  }
+}

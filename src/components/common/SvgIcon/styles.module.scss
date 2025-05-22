@@ -1,0 +1,114 @@
+@import '/src/styles/mixins';
+
+.svgIcon {
+  > div {
+    @include center;
+  }
+
+  &_size {
+    &_xs {
+      @include svg-size(10px);
+    }
+
+    &_sm {
+      @include svg-size(12px);
+    }
+
+    &_md {
+      @include svg-size(16px);
+    }
+
+    &_mdm {
+      @include svg-size(18px);
+    }
+
+    &_lg {
+      @include svg-size(20px);
+    }
+
+    &_xl {
+      @include svg-size(24px);
+    }
+
+    &_xxl {
+      @include svg-size(30px);
+    }
+
+    &_xxxl {
+      @include svg-size(40px);
+    }
+  }
+
+  &_rotate {
+    &_90 {
+      transform: rotate(90deg);
+    }
+
+    &_180 {
+      transform: rotate(180deg);
+    }
+
+    &_270 {
+      transform: rotate(270deg);
+    }
+
+    &_360 {
+      transform: rotate(360deg);
+    }
+  }
+
+  &_top {
+    &_1 {
+      margin-top: 1px;
+    }
+
+    &_2 {
+      margin-top: 2px;
+    }
+
+    &_3 {
+      margin-top: 3px;
+    }
+
+    &_4 {
+      margin-top: 4px;
+    }
+  }
+
+  &_pointer {
+    cursor: pointer;
+  }
+
+  &_display_inline-block {
+    display: inline-block;
+  }
+
+  // COLORS
+  &_color_primary {
+    @include svg-color(var(--text-primary));
+  }
+  &_color_secondary {
+    @include svg-color(var(--text-secondary));
+  }
+  &_color_white {
+    @include svg-color(#ffffff);
+  }
+  &_color_black {
+    @include svg-color(#000000);
+  }
+  &_color_brand {
+    @include svg-color(var(--text-brand));
+  }
+  &_color_info {
+    @include svg-color(#7685f7);
+  }
+  &_color_error {
+    @include svg-color(#d63030);
+  }
+  &_color_success {
+    @include svg-color(#329622);
+  }
+}
+.provider_name {
+  color: var(--text-tag);
+}

@@ -1,0 +1,364 @@
+@import 'src/styles/mixins.scss';
+@import 'src/styles/sizes.scss';
+@import 'src/styles/constants/animations.scss';
+@import 'src/styles/constants/breakpoints.scss';
+
+.button {
+  // width: 100%;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 6px;
+  white-space: nowrap;
+  text-transform: uppercase;
+
+  &_justify {
+    &_center {
+      justify-content: center;
+    }
+    &_between {
+      justify-content: space-between;
+    }
+  }
+
+  .left_icon,
+  .right_icon {
+    > div {
+      @include center;
+    }
+  }
+
+  > div {
+    @include center;
+  }
+
+  &.button_capitalize {
+    text-transform: capitalize;
+  }
+
+  &.button_uppercase {
+    text-transform: uppercase;
+  }
+
+  &_variant {
+    //! Primary
+    &_primary {
+      @include button-style(var(--button-primary-text), var(--button-primary), var(--button-primary-border));
+
+      &.button_with_shadow:not(.button_disabled) {
+        box-shadow: 0px 4px 20px 0px var(--button-primary-hover);
+      }
+
+      // &:focus,
+      &:active {
+        @include button-style(var(--button-primary-text), var(--button-primary-hover), var(--button-primary-hover));
+      }
+
+      &.button_disabled {
+        @include button-style(var(--button-disable-text), var(--button-disable), var(--button-disable));
+
+        // &:focus,
+        &:active,
+        &:hover {
+          @include button-style(var(--button-disable-text), var(--button-disable), var(--button-disable));
+        }
+      }
+    }
+    //! Outlined
+    &_outlined {
+      @include button-style(var(--button-primary-text), transparent, var(--button-primary-border));
+
+      &.button_with_shadow:not(.button_disabled) {
+        box-shadow: 0px 4px 20px 0px var(--button-primary-hover);
+      }
+
+      // &:focus,
+      &:active {
+        @include button-style(var(--button-primary-hover), transparent, var(--button-primary-hover));
+      }
+
+      &.button_disabled {
+        @include button-style(var(--button-disable-text), transparent, var(--button-disable));
+
+        // &:focus,
+        &:active,
+        &:hover {
+          @include button-style(var(--button-disable-text), transparent, var(--button-disable));
+        }
+      }
+    }
+
+    //! Brand
+    &_brand {
+      @include button-style(var(--button-brand-text), var(--button-brand), var(--button-brand-border));
+
+      &.button_with_shadow:not(.button_disabled) {
+        box-shadow: 0px 4px 20px 0px var(--button-brand-hover);
+      }
+
+      // &:focus,
+      &:active {
+        @include button-style(var(--button-brand-text), var(--button-brand-hover), var(--button-brand-border-hover));
+      }
+
+      &.button_disabled {
+        @include button-style(var(--button-disable-text), var(--button-disable), var(--button-disable));
+
+        // &:focus,
+        &:active,
+        &:hover {
+          @include button-style(var(--button-disable-text), var(--button-disable), var(--button-disable));
+        }
+      }
+    }
+    //! Secondary
+    &_secondary {
+      @include button-style(var(--button-secondary-text), var(--button-secondary), var(--button-secondary-border));
+
+      // &:focus,
+      &:active {
+        @include button-style(
+          var(--button-secondary-text),
+          var(--button-secondary-hover),
+          var(--button-secondary-border-hover)
+        );
+      }
+
+      &.button_disabled {
+        @include button-style(var(--button-disable-text), var(--button-disable), var(--button-disable));
+
+        // &:focus,
+        &:active,
+        &:hover {
+          @include button-style(var(--button-disable-text), var(--button-disable), var(--button-disable));
+        }
+      }
+    }
+    //! Ghost
+    &_ghost {
+      @include button-style(var(--button-ghost-text), transparent, var(--button-ghost-text));
+
+      // &:focus,
+      &:active {
+        border: 1px solid var(--button-ghost-hover);
+      }
+
+      &.button_disabled {
+        @include button-style(var(--button-disable-text), transparent, var(--button-disable-text));
+
+        // &:focus,
+        &:active,
+        &:hover {
+          @include button-style(var(--button-disable-text), transparent, var(--button-disable-text));
+        }
+      }
+    }
+    //! Text
+    &_text {
+      @include link-style(var(--button-primary-text));
+
+      // &:focus,
+      &:active {
+        @include link-style(var(--button-primary));
+      }
+
+      &.button_disabled {
+        @include link-style(var(--button-disable-text));
+
+        // &:focus,
+        &:active,
+        &:hover {
+          @include link-style(var(--button-disable-text));
+        }
+      }
+    }
+  }
+
+  // UPPERCASE
+  &_uppercase {
+    text-transform: uppercase;
+  }
+
+  // CAPITALIZE
+  &_capitalize {
+    text-transform: capitalize;
+  }
+
+  // CAPITALIZE
+  &_full_width {
+    width: 100%;
+  }
+
+  // SIZES
+  &_size_sm {
+    height: $button_height_sm;
+    padding: 0px 16px;
+    border-radius: $button_border_radius;
+    font-size: 12px;
+    font-style: normal;
+    font-family: 'Inter-Medium';
+    line-height: normal;
+    letter-spacing: 0.175px;
+
+    .left_icon,
+    .right_icon {
+      @include svg-size(14px);
+    }
+  }
+
+  &_size_md {
+    height: $button_height_md;
+    padding: 0px 16px;
+    border-radius: $button_border_radius;
+    font-size: 14px;
+    font-style: normal;
+    font-family: 'Inter-Medium';
+    line-height: normal;
+    letter-spacing: 0.175px;
+
+    .left_icon,
+    .right_icon {
+      @include svg-size(16px);
+    }
+  }
+
+  &_size_lg {
+    height: $button_height_lg;
+    padding: 0px 16px;
+    border-radius: $button_border_radius;
+    font-size: 16px;
+    font-style: normal;
+    font-family: 'Inter-Medium';
+    line-height: normal;
+
+    .left_icon,
+    .right_icon {
+      @include svg-size(18px);
+    }
+  }
+
+  &_size_xl {
+    height: $button_height_xl;
+    padding: 0px 16px;
+    border-radius: $button_border_radius;
+    font-size: 18px;
+    font-style: normal;
+    font-family: 'Inter-SemiBold';
+    line-height: normal;
+
+    .left_icon,
+    .right_icon {
+      @include svg-size(20px);
+    }
+  }
+}
+
+// LOADING
+.button {
+  &.button_loading {
+    @include loading-dots;
+  }
+}
+
+.button {
+  &_size_sm,
+  &_size_md,
+  &_size_lg,
+  &_size_xl {
+    .left_icon,
+    .right_icon {
+      &.icon_size {
+        &_xxxs {
+          @include svg-size(10px);
+        }
+
+        &_xxs {
+          @include svg-size(12px);
+        }
+
+        &_xs {
+          @include svg-size(14px);
+        }
+
+        &_sm {
+          @include svg-size(16px);
+        }
+
+        &_md {
+          @include svg-size(18px);
+        }
+
+        &_mdm {
+          @include svg-size(20px);
+        }
+
+        &_lg {
+          @include svg-size(24px);
+        }
+
+        &_xl {
+          @include svg-size(34px);
+        }
+
+        &_xxl {
+          @include svg-size(36px);
+        }
+
+        &_xxxl {
+          @include svg-size(40px);
+        }
+
+        &_full {
+          height: 100%;
+          width: 100%;
+          @include svg-size(100%);
+        }
+      }
+    }
+  }
+}
+
+// Only Desktop
+@media (min-width: $breakpoint-down-sm) {
+  .button {
+    &_variant {
+      &_primary {
+        &:hover {
+          @include button-style(var(--button-primary-text), var(--button-primary-hover), var(--button-primary-hover));
+        }
+      }
+      &_outlined {
+        &:hover {
+          @include button-style(var(--button-primary-hover), translate, var(--button-primary-hover));
+        }
+      }
+
+      &_brand {
+        &:hover {
+          @include button-style(var(--button-brand-text), var(--button-brand-hover), var(--button-brand-border-hover));
+        }
+      }
+      &_secondary {
+        &:hover {
+          @include button-style(
+            var(--button-secondary-text),
+            var(--button-secondary-hover),
+            var(--button-secondary-border-hover)
+          );
+        }
+      }
+      &_ghost {
+        &:hover {
+          @include button-style(var(--button-ghost-text), transparent, var(--button-ghost-hover));
+        }
+      }
+      &_text {
+        &:hover {
+          @include link-style(var(--button-primary));
+        }
+      }
+    }
+  }
+}

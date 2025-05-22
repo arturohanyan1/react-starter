@@ -1,0 +1,19 @@
+@import '/src/styles/variables.scss';
+@import '/src/styles/sizes.scss';
+@import '/src/styles/constants/breakpoints.scss';
+
+.layout {
+  background-color: var(--background-surface-1);
+  max-width: $maxWidth;
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0 auto;
+  padding-top: $desktop_header_height;
+  position: relative;
+}
+
+@media (max-width: $breakpoint-down-sm) {
+  .layout {
+    padding-top: $mobile_header_height;
+  }
+}

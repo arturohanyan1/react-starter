@@ -1,0 +1,183 @@
+@import './variables.scss';
+@import './constants/animations.scss';
+
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin svg-size($size) {
+  > div {
+    width: $size;
+    height: $size;
+
+    > div {
+      width: $size;
+      height: $size;
+    }
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@mixin svg-color($color, $animTime: 0) {
+  svg {
+    path {
+      fill: $color;
+      transition: all $animTime;
+    }
+  }
+}
+
+@mixin custom-btn($background-color, $stateMode) {
+  @if ($stateMode == dark) {
+    &:hover {
+      background: darken($background-color, 20%);
+    }
+
+    &:active {
+      background: darken($background-color, 5%);
+    }
+  }
+
+  @if ($stateMode == light) {
+    &:hover {
+      background: lighten($background-color, 20%);
+    }
+
+    &:active {
+      background: lighten($background-color, 5%);
+    }
+  }
+
+  @if ($stateMode == default) {
+    &:hover {
+      background: lighten($background-color, 5%);
+    }
+
+    &:active {
+      background: darken($background-color, 10%);
+    }
+  }
+}
+
+@mixin scrollbar {
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 5px;
+    background-color: var(--background-surface-2);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    height: 5px;
+    -webkit-box-shadow: inset 0 0 6px $shadow-color;
+    background-color: var(--background-surface-3);
+  }
+}
+
+@mixin lightScrollbar {
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 5px;
+    background-color: #efefef;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    height: 5px;
+    -webkit-box-shadow: inset 0 0 6px $shadow-color;
+    background-color: lightgrey;
+  }
+}
+
+@mixin hideScrollbar {
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    height: 0;
+  }
+}
+
+@mixin button-style($text-color, $bg-color, $border-color) {
+  color: $text-color;
+  background-color: $bg-color;
+  border: 1px solid $border-color;
+  transition: background-color $anim-time, border $anim-time;
+
+  .left_icon,
+  .right_icon {
+    @include svg-color($text-color);
+  }
+}
+
+@mixin link-style($text-color) {
+  color: $text-color;
+  transition: all $anim-time;
+
+  .left_icon,
+  .right_icon {
+    @include svg-color($text-color, $anim-time);
+  }
+}
+
+@mixin loading-dots {
+  position: relative;
+  & > div,
+  & > p,
+  & > span,
+  &::first-line {
+    visibility: hidden;
+  }
+  &::after {
+    content: '';
+    width: 14px;
+    aspect-ratio: 4;
+    --_g: no-repeat radial-gradient(circle closest-side, #fff 90%, #0000);
+    background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+    background-size: calc(100% / 3) 100%;
+    animation: loading-animation 1s infinite linear;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+// KEYFRAMES
+@keyframes loading-animation {
+  33% {
+    background-size: calc(100% / 3) 0%, calc(100% / 3) 100%, calc(100% / 3) 100%;
+  }
+  50% {
+    background-size: calc(100% / 3) 100%, calc(100% / 3) 0%, calc(100% / 3) 100%;
+  }
+  66% {
+    background-size: calc(100% / 3) 100%, calc(100% / 3) 100%, calc(100% / 3) 0%;
+  }
+}

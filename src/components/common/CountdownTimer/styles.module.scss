@@ -1,0 +1,143 @@
+@import '../../styles/mixins.scss';
+
+.timer {
+  @include center;
+  width: auto;
+
+  .time_block {
+    @include center;
+  }
+
+  .time {
+    @include center;
+    flex-direction: column;
+
+    .value {
+      text-align: center;
+      font-style: normal;
+      font-family: 'Inter';
+      line-height: 100%;
+      color: var(--text-primary);
+    }
+
+    .label {
+      text-align: center;
+      font-style: normal;
+      font-family: 'Inter';
+      line-height: 24px;
+      color: var(--text-primary);
+      color: hsla(0, 0%, 100%, 0.6);
+      text-transform: capitalize;
+    }
+  }
+
+  .dots {
+    @include center;
+    margin: 0px 10px;
+    span {
+      color: var(--text-primary);
+      font-style: normal;
+      font-family: 'Inter';
+      font-size: 25px;
+      line-height: 100%;
+    }
+  }
+}
+
+// TEXT BOLD
+.timer {
+  &.timer_text__bold {
+    .time_block {
+      .time {
+        .label,
+        .value {
+          font-weight: bold;
+        }
+      }
+      .dots {
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+// TEXT BOLD
+.timer {
+  &.timer_text__uppercase {
+    .time_block {
+      .time {
+        .label,
+        .value {
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}
+
+// SIZE
+.timer {
+  &_size {
+    &__sm {
+      .time {
+        .value {
+          font-size: 16px;
+          line-height: 24px;
+        }
+        .label {
+          font-size: 12px;
+          line-height: 12px;
+        }
+      }
+      .dots {
+        margin: 0px 8px;
+        span {
+          font-size: 18px;
+          line-height: 27px;
+        }
+      }
+    }
+
+    &__md {
+      .time {
+        .value {
+          font-size: 18px;
+          line-height: 100%;
+        }
+        .label {
+          font-size: 14px;
+          line-height: 24px;
+        }
+      }
+      .dots {
+        margin: 0px 8px;
+        span {
+          font-size: 18px;
+          line-height: 100%;
+        }
+      }
+    }
+
+    &__lg {
+      .time {
+        .value {
+          font-size: 22px;
+          line-height: 100%;
+        }
+        .label {
+          font-size: 16px;
+          line-height: 24px;
+        }
+      }
+      .dots {
+        margin: 0px 8px;
+        span {
+          font-size: 25px;
+          line-height: 100%;
+        }
+      }
+    }
+  }
+}

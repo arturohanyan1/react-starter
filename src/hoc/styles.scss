@@ -1,0 +1,56 @@
+.error-boundary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background-color: #f9fafb;
+  
+    .error-content {
+      max-width: 500px;
+      padding: 2rem;
+      background-color: #ffffff;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+  
+      h1 {
+        font-size: 2rem;
+        color: #ff4d4f;
+        margin-bottom: 1rem;
+      }
+  
+      p {
+        font-size: 1rem;
+        color: #595959;
+        margin-bottom: 1rem;
+      }
+  
+      .error-details {
+        margin-top: 1rem;
+        padding: 1rem;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        text-align: left;
+        font-size: 0.9rem;
+        color: #8c8c8c;
+        overflow: auto;
+      }
+  
+      .retry-button {
+        display: inline-block;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+        color: #ffffff;
+        background-color: #1890ff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+  
+        &:hover {
+          background-color: #40a9ff;
+        }
+      }
+    }
+  }
+  

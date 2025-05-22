@@ -1,0 +1,26 @@
+@import '/src/styles/variables.scss';
+@import '/src/styles/fonts.scss';
+
+body {
+  margin: 0;
+  background-color: var(--background-surface-1);
+  color: var(--text-primary);
+  font-family: 'Inter';
+  min-height: 100vh;
+  min-height: 100svh;
+  height: 100%;
+  width: 100%;
+
+  .link {
+    text-decoration: none;
+    color: var(--navigation-text);
+
+    &:hover {
+      color: var(--navigation-text-hover);
+    }
+
+    &:active {
+      color: var(--navigation-text-hover);
+    }
+  }
+}

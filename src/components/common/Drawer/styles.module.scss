@@ -1,0 +1,353 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/sizes.scss';
+@import '../../styles/z-indexes.scss';
+@import '../../styles/variables.scss';
+@import '../../styles/constants/animations.scss';
+
+.drawer_wrapper {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: $modal-index;
+  animation-name: wrapper-open;
+  animation-duration: $anim-time;
+  animation-fill-mode: forwards;
+
+  &.close {
+    animation-name: wrapper-close;
+  }
+
+  &.drawer_position {
+    &_left {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-end;
+    }
+    &_right {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+    &_center {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+    }
+  }
+}
+
+.drawer_container {
+  background-color: var(--background-surface-1);
+  border-radius: 0px 0px;
+  width: auto;
+  max-width: 100%;
+  position: relative;
+  animation-name: container-open-bottom;
+  animation-duration: $anim-time;
+  animation-fill-mode: forwards;
+  max-height: 100svh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  @include scrollbar;
+
+  // BORDER
+  &.drawer_container_with_border {
+    border: 1px solid var(--border-primary);
+  }
+
+  &.drawer_container_with_border_radius {
+    border-radius: 4px 4px 0px 0px;
+  }
+
+  // ANIMATIONS
+  &.drawer_container {
+    &_open {
+      &_anumation {
+        &_right {
+          right: 0;
+          animation-name: container-open-right;
+        }
+        &_left {
+          left: 0;
+          animation-name: container-open-left;
+        }
+        &_bottom {
+          left: 0;
+          animation-name: container-open-bottom;
+        }
+      }
+    }
+
+    &_close {
+      &_anumation {
+        &_right {
+          right: 0;
+          animation-name: container-close-right;
+        }
+        &_left {
+          left: 0;
+          animation-name: container-close-left;
+        }
+        &_bottom {
+          left: 0;
+          animation-name: container-close-bottom;
+        }
+      }
+    }
+  }
+
+  // SIZES
+  &_size {
+    &_sm {
+      width: 360px;
+    }
+
+    &_md {
+      width: 460px;
+    }
+
+    &_lg {
+      width: 600px;
+    }
+
+    &_xl {
+      width: 700px;
+    }
+
+    &_xxl {
+      width: 800px;
+    }
+
+    &_xxxl {
+      width: 900px;
+    }
+
+    &_auto {
+      width: auto;
+      max-width: $maxWidth;
+    }
+
+    &_max {
+      width: 100%;
+      max-width: $maxWidth;
+    }
+
+    &_full {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  // VARIANTS
+  &_variant {
+    &_default {
+      &.drawer_container_with_border {
+        border: 1px solid var(--border-primary);
+      }
+    }
+    &_info {
+      &.drawer_container_with_border {
+        border: 1px solid #7685f7;
+      }
+    }
+    &_success {
+      &.drawer_container_with_border {
+        border: 1px solid #329622;
+      }
+    }
+    &_error {
+      &.drawer_container_with_border {
+        border: 1px solid #d63030;
+      }
+    }
+    &_brand {
+      &.drawer_container_with_border {
+        border: 1px solid var(--border-brand);
+      }
+    }
+  }
+
+  &.drawer_container_full_height {
+    height: 100vh;
+    height: 100svh;
+    .content_body {
+      height: 100%;
+    }
+  }
+}
+
+.content {
+  height: 100%;
+  background: var(--background-surface-1);
+  border: 1px solid transparent;
+  padding: 0px;
+  width: auto;
+  max-height: 100vh;
+  max-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  overflow: auto;
+
+  .close_button {
+    height: auto;
+    width: auto;
+    padding: 0;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    border-radius: 50%;
+    @include center;
+    cursor: pointer;
+  }
+
+  &_header {
+    flex-shrink: 0;
+    width: 100%;
+    background-color: var(--background-surface-2);
+    padding: 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+
+    .header_title {
+      text-align: center;
+      font-family: 'Inter-Bold';
+      font-size: 18px;
+      font-style: normal;
+      line-height: normal;
+      color: var(--text-primary);
+    }
+
+    .header_description {
+      text-align: center;
+      font-family: 'Inter';
+      font-size: 16px;
+      font-style: normal;
+      line-height: normal;
+      color: var(--text-secondary);
+    }
+  }
+
+  &_body {
+    flex-grow: 1;
+    width: 100%;
+    padding: 30px 30px 30px;
+    overflow: auto;
+
+    &.content_body_without_padding {
+      padding: 0;
+    }
+  }
+
+  &_footer {
+    flex-shrink: 0;
+    @include center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px 30px 30px;
+
+    .content_footer_button {
+      min-width: 120px;
+      max-width: 100%;
+    }
+  }
+}
+
+// Wrapper Keyframes
+@keyframes wrapper-open {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+  }
+}
+
+@keyframes wrapper-close {
+  from {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+  }
+  to {
+    background-color: transparent;
+  }
+}
+
+// Container Keyframes
+@keyframes container-open-bottom {
+  from {
+    bottom: -100%;
+  }
+  to {
+    bottom: 0;
+  }
+}
+
+@keyframes container-open-right {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 0;
+  }
+}
+
+@keyframes container-open-left {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 0;
+  }
+}
+
+@keyframes container-close-bottom {
+  from {
+    bottom: 0;
+  }
+  to {
+    bottom: -100%;
+  }
+}
+
+@keyframes container-close-left {
+  from {
+    left: 0;
+  }
+  to {
+    left: -100%;
+  }
+}
+
+@keyframes container-close-right {
+  from {
+    right: 0;
+  }
+  to {
+    right: -100%;
+  }
+}
+// ONLY MOBILE
+@media (max-width: 1334px) {
+  .drawer_container,
+  .main_content {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

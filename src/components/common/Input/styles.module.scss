@@ -1,0 +1,242 @@
+@import '../../styles/constants/animations.scss';
+@import '../../styles/constants/breakpoints.scss';
+@import '../../styles/sizes.scss';
+@import '../../styles/mixins.scss';
+
+.input {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &_label {
+    font-family: 'Inter-SemiBold';
+    font-size: 14px;
+    line-height: normal;
+    display: block;
+    margin-bottom: 4px;
+    color: var(--text-primary);
+    text-transform: capitalize;
+    &__required {
+      color: var(--text-error);
+      font-size: 12px;
+      margin-right: 2px;
+    }
+  }
+
+  .input_wrapper {
+    width: 100%;
+    position: relative;
+  }
+
+  input {
+    width: 100%;
+    background-color: var(--input-background-surface-1);
+    border: 1px solid var(--input-border-default);
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color $anim-time-slow ease, background-color $anim-time-slow ease;
+    padding: 8px 10px;
+    border-radius: $input_border_radius;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    appearance: none;
+    font-style: normal;
+    font-family: 'Inter';
+    font-size: 14px;
+    line-height: normal;
+
+    &:-webkit-autofill,
+    &::-webkit-autofill-selected,
+    input:-webkit-autofill:focus {
+      transition: background-color 0s 600000s, color 0s 600000s;
+    }
+
+    &:focus {
+      border-color: var(--input-border-typing);
+    }
+
+    &::placeholder {
+      color: var(--text-secondary);
+    }
+  }
+
+  // SIZES
+  &_size_sm {
+    input {
+      height: $input_height_sm;
+      font-size: 12px;
+    }
+  }
+
+  &_size_md {
+    input {
+      height: $input_height_md;
+      font-size: 14px;
+    }
+  }
+
+  &_size_lg {
+    input {
+      height: $input_height_lg;
+      font-size: 16px;
+    }
+  }
+
+  &_size_xl {
+    input {
+      height: $input_height_xl;
+      font-size: 16px;
+    }
+  }
+
+  &_error_text {
+    font-family: 'Inter-Light';
+    font-size: 10px;
+    line-height: normal;
+    text-align: left;
+    color: var(--text-error);
+  }
+
+  &_info_text {
+    font-family: 'Inter-Light';
+    font-size: 10px;
+    line-height: normal;
+    text-align: left;
+    color: var(--text-primary);
+  }
+
+  &_disabled {
+    input {
+      background-color: var(--input-background-disable);
+    }
+  }
+
+  &_error {
+    input {
+      border-color: var(--input-border-error);
+    }
+  }
+
+  &_with_left_icon {
+    input {
+      padding-left: 32px;
+    }
+  }
+
+  &_with_right_icon {
+    input {
+      padding-right: 32px;
+    }
+  }
+}
+
+// TOGGLE BUTTOON
+.toggle_button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+}
+
+// ICONS
+.input {
+  .input_Icon {
+    > div {
+      @include center;
+    }
+  }
+
+  .right_icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .left_icon {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.input {
+  .input_Icon {
+    &.icon_color {
+      &_primary {
+        @include svg-color(var(--text-primary));
+      }
+      &_secondary {
+        @include svg-color(var(--text-secondary));
+      }
+    }
+  }
+}
+
+.input {
+  .input_Icon {
+    &.icon_size {
+      &_xxxs {
+        @include svg-size(10px);
+      }
+
+      &_xxs {
+        @include svg-size(12px);
+      }
+
+      &_xs {
+        @include svg-size(14px);
+      }
+
+      &_sm {
+        @include svg-size(16px);
+      }
+
+      &_md {
+        @include svg-size(18px);
+      }
+
+      &_mdm {
+        @include svg-size(20px);
+      }
+
+      &_lg {
+        @include svg-size(24px);
+      }
+
+      &_xl {
+        @include svg-size(34px);
+      }
+
+      &_xxl {
+        @include svg-size(36px);
+      }
+
+      &_xxxl {
+        @include svg-size(40px);
+      }
+
+      &_full {
+        height: 100%;
+        width: 100%;
+        @include svg-size(100%);
+      }
+    }
+  }
+}
+
+// Only Desktop
+@media (min-width: $breakpoint-down-sm) {
+  .input {
+    input {
+      &:hover:not(:disabled) {
+        border-color: var(--input-border-hover);
+      }
+    }
+  }
+}

@@ -1,0 +1,65 @@
+@import './variables.scss';
+
+.fixed-body {
+  overflow: hidden;
+}
+
+.success-toast-message {
+  background: var(--background-surface-3);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 400;
+  width: auto;
+  min-width: auto;
+  padding: 5px;
+  border: 1px solid #329622;
+  min-height: auto;
+  border-radius: 8px;
+  margin: 5px $page-paddind-xs;
+
+  .Toastify__close-button {
+    svg {
+      fill: var(--text-primary);
+    }
+  }
+}
+
+.error-toast-message {
+  background: var(--background-surface-3);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 400;
+  width: auto;
+  min-width: auto;
+  padding: 5px;
+  border: 1px solid #d63030;
+  min-height: auto;
+  border-radius: 8px;
+  margin: 5px $page-paddind-xs;
+
+  .Toastify__close-button {
+    svg {
+      fill: var(--text-primary);
+    }
+  }
+}
+
+.info-toast-message {
+  background: var(--background-surface-3);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 400;
+  width: auto;
+  min-width: auto;
+  padding: 5px;
+  border: 1px solid #7685f7;
+  min-height: auto;
+  border-radius: 8px;
+  margin: 5px $page-paddind-xs;
+
+  .Toastify__close-button {
+    svg {
+      fill: var(--text-primary);
+    }
+  }
+}

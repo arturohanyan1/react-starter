@@ -1,0 +1,493 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/sizes.scss';
+@import '../../styles/constants/animations.scss';
+@import '../../styles/constants/breakpoints.scss';
+
+// LINK VEW
+.custom_link_view_link {
+  &.custom_link {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 6px;
+
+    &.custom_link_variant {
+      // DEFAULT LINK
+      &_default_link {
+        @include link-style(var(--navigation-text));
+
+        // &:focus,
+        &:active {
+          color: 1px solid var(--navigation-text-hover);
+        }
+
+        &.custom_link_disabled {
+          @include link-style(var(--text-disable));
+
+          // &:focus,
+          &:active,
+          &:hover {
+            @include link-style(var(--text-disable));
+          }
+        }
+      }
+
+      &_brand_link {
+        @include link-style(var(--text-brand));
+
+        // &:focus,
+        &:active {
+          @include link-style(var(--navigation-text-hover));
+          text-decoration: underline;
+        }
+
+        &.custom_link_disabled {
+          @include link-style(var(--text-disable));
+
+          // &:focus,
+          &:active,
+          &:hover {
+            @include link-style(var(--text-disable));
+          }
+        }
+      }
+    }
+    // SIZES
+    &_size_sm {
+      font-size: 12px;
+      font-style: normal;
+      font-family: 'Inter';
+      line-height: normal;
+      letter-spacing: 0.175px;
+
+      .left_icon,
+      .right_icon {
+        @include svg-size(14px);
+      }
+    }
+
+    &_size_md {
+      font-size: 14px;
+      font-style: normal;
+      font-family: 'Inter';
+      line-height: normal;
+      letter-spacing: 0.175px;
+
+      .left_icon,
+      .right_icon {
+        @include svg-size(16px);
+      }
+    }
+
+    &_size_lg {
+      font-size: 16px;
+      font-style: normal;
+      font-family: 'Inter';
+      line-height: normal;
+
+      .left_icon,
+      .right_icon {
+        @include svg-size(18px);
+      }
+    }
+
+    &_size_xl {
+      font-size: 18px;
+      font-style: normal;
+      font-family: 'Inter';
+      line-height: 28px;
+
+      .left_icon,
+      .right_icon {
+        @include svg-size(20px);
+      }
+    }
+  }
+}
+
+// BUTTON VIEW
+.custom_link_view_button {
+  &.custom_link {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 6px;
+    white-space: nowrap;
+    text-transform: uppercase;
+
+    &.custom_link_variant {
+      //! Primary
+      &_primary_button {
+        @include button-style(var(--button-primary-text), var(--button-primary), var(--button-primary-border));
+
+        &.custom_link_with_shadow:not(.custom_link_disabled) {
+          box-shadow: 0px 4px 20px 0px var(--button-primary-hover);
+        }
+
+        // &:focus,
+        &:active {
+          @include button-style(var(--button-primary-text), var(--button-primary-hover), var(--button-primary-hover));
+        }
+
+        &.custom_link_disabled {
+          @include button-style(var(--button-disable-text), var(--button-disable), var(--button-disable));
+
+          // &:focus,
+          &:active,
+          &:hover {
+            @include button-style(var(--button-disable-text), var(--button-disable), var(--button-disable));
+          }
+        }
+      }
+      //! Outlined
+      &_outlined_button {
+        @include button-style(var(--button-primary-text), transparent, var(--button-primary-border));
+
+        &.custom_link_with_shadow:not(.custom_link_disabled) {
+          box-shadow: 0px 4px 20px 0px var(--button-primary-hover);
+        }
+
+        // &:focus,
+        &:active {
+          @include button-style(var(--button-primary-hover), transparent, var(--button-primary-hover));
+        }
+
+        &.custom_link_disabled {
+          @include button-style(var(--button-disable-text), transparent, var(--button-disable));
+
+          // &:focus,
+          &:active,
+          &:hover {
+            @include button-style(var(--button-disable-text), transparent, var(--button-disable));
+          }
+        }
+      }
+
+      //! Brand
+      &_brand_button {
+        @include button-style(var(--button-brand-text), var(--button-brand), var(--button-brand-border));
+
+        &.custom_link_with_shadow:not(.custom_link_disabled) {
+          box-shadow: 0px 4px 20px 0px var(--button-brand-hover);
+        }
+
+        // &:focus,
+        &:active {
+          @include button-style(var(--button-brand-text), var(--button-brand-hover), var(--button-brand-border-hover));
+        }
+
+        &.custom_link_disabled {
+          @include button-style(var(--button-disable-text), var(--button-disable), var(--button-disable));
+
+          // &:focus,
+          &:active,
+          &:hover {
+            @include button-style(var(--button-disable-text), var(--button-disable), var(--button-disable));
+          }
+        }
+      }
+      //! Secondary
+      &_secondary_button {
+        @include button-style(var(--button-secondary-text), var(--button-secondary), var(--button-secondary-border));
+
+        // &:focus,
+        &:active {
+          @include button-style(
+            var(--button-secondary-text),
+            var(--button-secondary-hover),
+            var(--button-secondary-border-hover)
+          );
+        }
+
+        &.custom_link_disabled {
+          @include button-style(var(--button-disable-text), var(--button-disable), var(--button-disable));
+
+          // &:focus,
+          &:active,
+          &:hover {
+            @include button-style(var(--button-disable-text), var(--button-disable), var(--button-disable));
+          }
+        }
+      }
+    }
+
+    // SIZES
+    &_size_sm {
+      height: $button_height_sm;
+      padding: 0px 16px;
+      border-radius: $button_border_radius;
+      font-size: 12px;
+      font-style: normal;
+      font-family: 'Inter-Medium';
+      line-height: normal;
+
+      .left_icon,
+      .right_icon {
+        @include svg-size(14px);
+      }
+    }
+
+    &_size_md {
+      height: $button_height_md;
+      padding: 0px 16px;
+      border-radius: $button_border_radius;
+      font-size: 14px;
+      font-style: normal;
+      font-family: 'Inter-Medium';
+      line-height: normal;
+
+      .left_icon,
+      .right_icon {
+        @include svg-size(16px);
+      }
+    }
+
+    &_size_lg {
+      height: $button_height_lg;
+      padding: 0px 16px;
+      border-radius: $button_border_radius;
+      font-size: 16px;
+      font-style: normal;
+      font-family: 'Inter-Medium';
+      line-height: normal;
+
+      .left_icon,
+      .right_icon {
+        @include svg-size(18px);
+      }
+    }
+
+    &_size_xl {
+      height: $button_height_xl;
+      padding: 0px 16px;
+      border-radius: $button_border_radius;
+      font-size: 18px;
+      font-style: normal;
+      font-family: 'Inter-SemiBold';
+      line-height: normal;
+
+      .left_icon,
+      .right_icon {
+        @include svg-size(20px);
+      }
+    }
+  }
+}
+
+.custom_link {
+  // CAPITALIZE
+  &.custom_link_capitalize {
+    text-transform: capitalize;
+  }
+
+  // UPPERCASE
+  &.custom_link_uppercase {
+    text-transform: uppercase;
+  }
+
+  // UNDERLINE
+  &.custom_link_with_underline {
+    text-decoration: underline;
+  }
+
+  &.custom_link_no_wrap {
+    white-space: nowrap;
+  }
+
+  // JUSTIFY
+  &_justify {
+    &_center {
+      justify-content: center;
+    }
+    &_between {
+      justify-content: space-between;
+    }
+  }
+
+  // WIDTH
+  &_full_width {
+    width: 100%;
+  }
+
+  // ICONS
+  .left_icon,
+  .right_icon {
+    > div {
+      @include center;
+    }
+  }
+
+  > div {
+    @include center;
+  }
+}
+
+// LOADING
+.custom_link {
+  &.custom_link_loading {
+    @include loading-dots;
+  }
+}
+
+// TEXT
+.custom_link {
+  &.custom_link_font_weight {
+    &_100 {
+      font-family: 'Inter-Thin';
+    }
+    &_200 {
+      font-family: 'Inter-ExtraLight';
+    }
+    &_300 {
+      font-family: 'Inter-Light';
+    }
+    &_400 {
+      font-family: 'Inter';
+    }
+    &_500 {
+      font-family: 'Inter-Medium';
+    }
+    &_600 {
+      font-family: 'Inter-SemiBold';
+    }
+    &_700 {
+      font-family: 'Inter-Bold';
+    }
+    &_800 {
+      font-family: 'Inter-ExtraBold';
+    }
+    &_900 {
+      font-family: 'Inter-Black';
+    }
+  }
+}
+
+// ICON SIZES
+.custom_link {
+  &_size_sm,
+  &_size_md,
+  &_size_lg,
+  &_size_xl {
+    .left_icon,
+    .right_icon {
+      &.icon_size {
+        &_xxxs {
+          @include svg-size(10px);
+        }
+
+        &_xxs {
+          @include svg-size(12px);
+        }
+
+        &_xs {
+          @include svg-size(14px);
+        }
+
+        &_sm {
+          @include svg-size(16px);
+        }
+
+        &_md {
+          @include svg-size(18px);
+        }
+
+        &_mdm {
+          @include svg-size(20px);
+        }
+
+        &_lg {
+          @include svg-size(24px);
+        }
+
+        &_xl {
+          @include svg-size(34px);
+        }
+
+        &_xxl {
+          @include svg-size(36px);
+        }
+
+        &_xxxl {
+          @include svg-size(40px);
+        }
+
+        &_full {
+          height: 100%;
+          width: 100%;
+          @include svg-size(100%);
+        }
+      }
+    }
+  }
+}
+
+// Only Desktop
+@media (min-width: $breakpoint-down-sm) {
+  // LINK VIEW
+  .custom_link_view_link {
+    &.custom_link {
+      &_variant {
+        &_default_link:not(.custom_link_disabled) {
+          &:hover {
+            @include link-style(var(--navigation-text-hover));
+
+            &.custom_link_hover_with_underline {
+              text-decoration: underline;
+            }
+          }
+        }
+
+        &_brand_link:not(.custom_link_disabled) {
+          &:hover {
+            @include link-style(var(--navigation-text-hover));
+
+            &.custom_link_hover_with_underline {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // BUTTON VIEW
+  .custom_link_view_button {
+    &.custom_link {
+      &_variant {
+        &_primary_button {
+          &:hover {
+            @include button-style(var(--button-primary-text), var(--button-primary-hover), var(--button-primary-hover));
+          }
+        }
+        &_outlined_button {
+          &:hover {
+            @include button-style(var(--button-primary-hover), transparent, var(--button-primary-hover));
+          }
+        }
+
+        &_brand_button {
+          &:hover {
+            @include button-style(
+              var(--button-brand-text),
+              var(--button-brand-hover),
+              var(--button-brand-border-hover)
+            );
+          }
+        }
+        &_secondary_button {
+          &:hover {
+            @include button-style(
+              var(--button-secondary-text),
+              var(--button-secondary-hover),
+              var(--button-secondary-border-hover)
+            );
+          }
+        }
+      }
+    }
+  }
+}
